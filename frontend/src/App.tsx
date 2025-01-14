@@ -10,7 +10,8 @@ interface WeChatLoginConfig {
 
 const wechatConfig: WeChatLoginConfig = {
   appId: import.meta.env.VITE_WECHAT_APP_ID || '',
-  redirectUri: `${window.location.origin}/auth/callback`,
+  // 使用环境变量中的回调地址
+  redirectUri: import.meta.env.VITE_REDIRECT_URI || `${window.location.origin}/auth/callback`,
   scope: 'snsapi_userinfo'
 }
 
@@ -21,6 +22,11 @@ function App() {
   const handleLogin = () => {
     if (!wechatConfig.appId) {
       setError('请先配置微信 AppID')
+      return
+    }
+
+    if (!wechatConfig.redirectUri) {
+      setError('请先配置回调地址')
       return
     }
 
