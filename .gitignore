@@ -1,0 +1,57 @@
+# Build outputs
+build/
+lib/
+dist-*/
+docs/.vitepress/dist
+docs/.vitepress/cache
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.nx/
+.nx/cache
+
+# Cache and logs
+*.log
+.cache/
+.temp/
+.rn_temp/
+coverage/
+.eslint.log
+
+# IDE and OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Environment and local files
+.env*
+!.env.example
+*.local
+.env
+.env.local
+
+# TypeScript
+*.tsbuildinfo
+.turbo/
+tsconfig.tsbuildinfo
+
+# Project specific
+temp/
+out/
+dist/
+__essence__/
+
+# Build outputs
+build/
+lib/
+dist-*/
+docs/.vitepress/dist
+docs/.vitepress/cache

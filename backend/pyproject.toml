@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "wechat-login-backend"
+version = "0.1.0"
+description = "WeChat Login Backend Service"
+authors = ["Your Name"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.115.6"
+uvicorn = "^0.34.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+python-multipart = "^0.0.20"
+requests = "^2.32.3"
+pydantic = "^2.10.5"
+pydantic-settings = "^2.1.0"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
