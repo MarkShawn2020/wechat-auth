@@ -26,10 +26,22 @@ function App() {
 
     setLoading(true)
     const { appId, redirectUri, scope } = wechatConfig
-    const authUrl = `https://open.weixin.qq.com/connect/qrconnect?appid=${appId}&redirect_uri=${encodeURIComponent(
+    // 使用微信公众平台的网页授权链接
+    const authUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${encodeURIComponent(
       redirectUri
     )}&response_type=code&scope=${scope}&state=STATE#wechat_redirect`
-    window.location.href = authUrl
+    
+    // 判断是否在微信浏览器中
+    const isWechat = /MicroMessenger/i.test(navigator.userAgent)
+    
+    if (isWechat) {
+      // 在微信内直接跳转
+      window.location.href = authUrl
+    } else {
+      // 在非微信浏览器中显示提示
+      setError('请在微信客户端中打开链接')
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -72,7 +84,9 @@ function App() {
               微信登录示例
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              使用微信扫码登录
+              {/MicroMessenger/i.test(navigator.userAgent)
+                ? '使用微信账号登录'
+                : '请在微信中打开'}
             </p>
           </div>
 
